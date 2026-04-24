@@ -54,7 +54,7 @@ This project follows a high-standard analytical pipeline to ensure model reliabi
 6. **Initial Error Evaluation:** Before final validation, performed a comprehensive **ex-post error analysis**, calculating **RMSE, MAE, and MAPE** (4.05%). Conducted a **temporal error analysis** (MAE over time) to verify the model's consistency across the 2000-2023 period.
 7. **Final Validation:** Conducted a **10-fold Cross-Validation** to prove the model's stability and its ability to generalize to unseen data without overfitting.
 
-[cross_val.pdf](https://github.com/user-attachments/files/27062267/cross_val.pdf)
+<img width="787" height="511" alt="Rplot" src="https://github.com/user-attachments/assets/8327d2ea-cb48-46f6-b284-c1893e4887fa" />
 
 
 ## 📈 Key Findings (final model treatment)
