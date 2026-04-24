@@ -54,15 +54,14 @@ This project follows a high-standard analytical pipeline to ensure model reliabi
 6. **Initial Error Evaluation:** Before final validation, performed a comprehensive **ex-post error analysis**, calculating **RMSE, MAE, and MAPE** (4.05%). Conducted a **temporal error analysis** (MAE over time) to verify the model's consistency across the 2000-2023 period.
 7. **Final Validation:** Conducted a **10-fold Cross-Validation** to prove the model's stability and its ability to generalize to unseen data without overfitting.
 
+![Cross_val](cross_val.pdf)
+
 ## 📈 Key Findings (final model treatment)
 The final model demonstrates exceptional fit and statistical robustness. With an **Adjusted $R^2$ of 0.842**, the model explains approximately 84% of the global variance in life expectancy. The **F-statistic of 1860** (with a p-value $< 2.2e-16$) confirms the high collective significance of the chosen predictors. Across 3130 degrees of freedom, the **Residual Standard Error (RSE)** stands at **3.571**, indicating that on average, the model's estimations deviate by only about 3.5 years from the actual observations.
 * **The "Rich" Interaction:** The Chow Test revealed that the impact of GDP and health expenditure on life expectancy differs drastically depending on a country's wealth level (structural break).
 * **Fertility Impact:** Each additional birth per woman statistically shortens average life expectancy by approximately **1.8 years** (acting as a proxy for maternal healthcare access).
 * **Energy Infrastructure:** Access to electricity serves as a fundamental pillar for modern medicine; every 1% increase in access correlates with a **+0.15 year** increase in life expectancy.
 * **Model Accuracy:** The Mean Absolute Percentage Error (MAPE) is only **4.05%**, confirming the model's high predictive power.
-
-## 📊 Visualizations
-*The analysis includes logarithmic GDP distributions, correlation matrices, and ex-post error analysis.*
 
 ## 📂 Project Structure
 * `data_life_exp_wrld.csv` – raw dataset (World Bank Source).
