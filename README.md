@@ -12,16 +12,38 @@ The objective of this project is to identify and analyze the key determinants of
     * `lmtest` & `sandwich` – robust standard errors (HC3) & heteroskedasticity testing
     * `tseries` & `randtests` – normality (Jarque-Bera) & randomness tests
     * `mice` – missing data pattern analysis
-    * `ggplot2`, `patchwork` & `corrplot` – advanced data visualization
-* **Methods:** OLS Regression, Hellwig’s Feature Selection, Chow Test, Ramsey RESET, 10-fold Cross-Validation.
 
-## 📈 Key Findings
-* **The "Rich" Interaction:** The Chow Test revealed that the impact of GDP and health expenditure on life expectancy differs drastically depending on a country's wealth level (structural break).
-* **Fertility Impact:** Each additional birth per woman statistically shortens average life expectancy by approximately **1.8 years** (acting as a proxy for maternal healthcare access).
-* **Energy Infrastructure:** Access to electricity serves as a fundamental pillar for modern medicine; every 1% increase in access correlates with a **+0.15 year** increase in life expectancy.
-* **Model Accuracy:** The Mean Absolute Percentage Error (MAPE) is only **4.05%**, confirming the model's high predictive power.
+## 🛠 Methodology & Statistical Techniques
 
-## 🔬 Econometric Rigor (Model Diagnostics)
+### 1. Data Preparation & Engineering
+* **Missing Data Analysis:** Using the `MICE` pattern to assess and handle gaps in World Bank datasets.
+* **Feature Transformation:** Log-log and semi-log transformations to linearize relationships and stabilize variance (Heteroskedasticity mitigation).
+* **Dummy Variable Integration:** Creating structural indicators (`rich` variable) to model divergent economic realities.
+
+### 2. Feature Selection & Optimization
+* **Hellwig’s Information Capacity Method:** Primary selection of the optimal predictor set.
+* **Information Criteria:** Optimization using **AIC (Akaike Information Criterion)** and **Adjusted R-squared**.
+* **Nested Model Comparison:** Using **ANOVA** to statistically justify the inclusion of additional variables (Urbanization, Health Exp).
+
+### 3. Econometric Diagnostics (The "Stress Test")
+* **Multicollinearity:** **VIF (Variance Inflation Factor)** analysis to ensure predictor independence.
+* **Normality of Residuals:** **Shapiro-Wilk** and **Jarque-Bera** tests.
+* **Heteroskedasticity Suite:** **Breusch-Pagan**, **Goldfeld-Quandt**, and **White’s Test** (via fitted values) to check for non-constant variance.
+* **Autocorrelation & Randomness:** **Durbin-Watson** test and **Runs Test** to verify the independence of error terms.
+* **Functional Form:** **Ramsey RESET** test to validate linear vs. non-linear specifications.
+* **Structural Stability:** **Chow Test** to identify and fix structural breaks between developed and developing economies.
+
+### 4. Estimation & Robustness
+* **OLS (Ordinary Least Squares):** Primary estimation method.
+* **HC3 Robust Standard Errors:** Application of the MacKinnon-White estimator to ensure valid inference under heteroskedasticity.
+
+### 5. Evaluation & Validation
+* **Ex-post Error Metrics:** Calculation of **MAE, RMSE, and MAPE** to assess point-forecast accuracy.
+* **Temporal Accuracy Analysis:** Monitoring Mean Absolute Error (MAE) trends over the 2000-2023 period.
+* **Outlier Analysis:** Investigating "Residual vs Fitted" anomalies (e.g., the impact of the HIV/AIDS epidemic or COVID-19).
+* **10-fold Cross-Validation:** Final stress test to ensure model stability and prevent overfitting.
+
+## 🔬 Model Diagnostics
 This project follows a high-standard analytical pipeline to ensure model reliability:
 
 1. **Data Preprocessing & EDA:** Initial data restructuring, including handling missing patterns (MICE) and log-transforming skewed variables (GDP, CO2) to stabilize variance and linearize relationships.
@@ -31,6 +53,13 @@ This project follows a high-standard analytical pipeline to ensure model reliabi
 5. **Robustness:** Implemented **HC3 Robust Standard Errors** to maintain valid statistical inference in the presence of confirmed heteroskedasticity.
 6. **Initial Error Evaluation:** Before final validation, performed a comprehensive **ex-post error analysis**, calculating **RMSE, MAE, and MAPE** (4.05%). Conducted a **temporal error analysis** (MAE over time) to verify the model's consistency across the 2000-2023 period.
 7. **Final Validation:** Conducted a **10-fold Cross-Validation** to prove the model's stability and its ability to generalize to unseen data without overfitting.
+
+## 📈 Key Findings (final model treatment)
+The final model demonstrates exceptional fit and statistical robustness. With an **Adjusted $R^2$ of 0.842**, the model explains approximately 84% of the global variance in life expectancy. The **F-statistic of 1860** (with a p-value $< 2.2e-16$) confirms the high collective significance of the chosen predictors. Across 3130 degrees of freedom, the **Residual Standard Error (RSE)** stands at **3.571**, indicating that on average, the model's estimations deviate by only about 3.5 years from the actual observations.
+* **The "Rich" Interaction:** The Chow Test revealed that the impact of GDP and health expenditure on life expectancy differs drastically depending on a country's wealth level (structural break).
+* **Fertility Impact:** Each additional birth per woman statistically shortens average life expectancy by approximately **1.8 years** (acting as a proxy for maternal healthcare access).
+* **Energy Infrastructure:** Access to electricity serves as a fundamental pillar for modern medicine; every 1% increase in access correlates with a **+0.15 year** increase in life expectancy.
+* **Model Accuracy:** The Mean Absolute Percentage Error (MAPE) is only **4.05%**, confirming the model's high predictive power.
 
 ## 📊 Visualizations
 *The analysis includes logarithmic GDP distributions, correlation matrices, and ex-post error analysis.*
