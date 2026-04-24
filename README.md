@@ -54,7 +54,8 @@ This project follows a high-standard analytical pipeline to ensure model reliabi
 6. **Initial Error Evaluation:** Before final validation, performed a comprehensive **ex-post error analysis**, calculating **RMSE, MAE, and MAPE** (4.05%). Conducted a **temporal error analysis** (MAE over time) to verify the model's consistency across the 2000-2023 period.
 7. **Final Validation:** Conducted a **10-fold Cross-Validation** to prove the model's stability and its ability to generalize to unseen data without overfitting.
 
-![Cross_val](cross_val.pdf)
+[cross_val.pdf](https://github.com/user-attachments/files/27062267/cross_val.pdf)
+
 
 ## 📈 Key Findings (final model treatment)
 The final model demonstrates exceptional fit and statistical robustness. With an **Adjusted $R^2$ of 0.842**, the model explains approximately 84% of the global variance in life expectancy. The **F-statistic of 1860** (with a p-value $< 2.2e-16$) confirms the high collective significance of the chosen predictors. Across 3130 degrees of freedom, the **Residual Standard Error (RSE)** stands at **3.571**, indicating that on average, the model's estimations deviate by only about 3.5 years from the actual observations.
